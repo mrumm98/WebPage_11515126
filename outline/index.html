@@ -3,280 +3,950 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="藍天咖啡，為手沖咖啡愛好者挑選當季精品咖啡豆，讓每一杯都清澈、明亮、值得細品。">
-  <title>藍天咖啡｜讓風味，慢慢抵達</title>
+  <meta name="description" content="茶香｜高級台灣茶葉品牌。嚴選梨山高冷茶、東方美人與百年炭焙烏龍，邀您品味金黃澄澈的高山韻味與茶席慢生活。">
+  <title>茶香 CHA XIANG｜焙火成金，淬鍊東方雅致之韻</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@500;600;700;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;600;700&family=Noto+Serif+TC:wght@500;600;700;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --navy: #062742;
-      --blue: #0c5b95;
-      --sky: #75c6e8;
-      --mist: #eaf5f7;
-      --cream: #fbfaf6;
-      --ink: #122534;
-      --muted: #607482;
-      --line: #d7e4e8;
-      --sand: #e5b66b;
-      --shadow: 0 18px 50px rgba(6, 39, 66, .13);
+      --gold: #c99b3b;
+      --gold-dark: #9e7520;
+      --gold-light: #f3dfa2;
+      --amber: #8c5d18;
+      --tea-dark: #1b1712;
+      --tea-deep: #120f0c;
+      --cream: #faf7f0;
+      --paper: #f4ede1;
+      --ink: #2b241c;
+      --muted: #7a6e60;
+      --line: #e5dacf;
+      --line-dark: rgba(201, 155, 59, 0.25);
+      --shadow: 0 20px 50px rgba(27, 23, 18, 0.12);
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      color: var(--ink);
       background: var(--cream);
+      color: var(--ink);
       font-family: "Noto Sans TC", sans-serif;
-      font-size: 16px;
-      line-height: 1.7;
+      line-height: 1.75;
       -webkit-font-smoothing: antialiased;
     }
 
     a { color: inherit; text-decoration: none; }
-    button, input { font: inherit; }
+    button, input, select { font: inherit; }
     button { cursor: pointer; }
-    .wrap { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
-    .serif { font-family: "Noto Serif TC", serif; }
+    .container { width: min(1140px, calc(100% - 52px)); margin: 0 auto; }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+
+    /* Typography */
     .eyebrow {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin: 0 0 13px;
-      color: var(--blue);
+      gap: 12px;
+      margin: 0 0 14px;
+      color: var(--gold-dark);
+      font-family: "DM Mono", monospace;
       font-size: 11px;
-      font-weight: 700;
-      letter-spacing: .18em;
+      letter-spacing: .16em;
+      font-weight: 500;
     }
     .eyebrow::before { content: ""; width: 28px; height: 1px; background: currentColor; }
-    .section-title {
+    .title {
       margin: 0;
-      font: 700 clamp(30px, 4vw, 46px)/1.28 "Noto Serif TC", serif;
-      letter-spacing: .035em;
+      font: 700 clamp(30px, 4vw, 48px)/1.32 "Noto Serif TC", serif;
+      letter-spacing: .06em;
     }
-    .section-title em { color: var(--blue); font-style: normal; }
-    .section-copy { max-width: 48ch; margin: 20px 0 0; color: var(--muted); }
+    .title strong { color: var(--gold); font: inherit; }
+    .copy { max-width: 48ch; margin: 18px 0 0; color: var(--muted); font-size: 15px; }
+
+    /* Buttons */
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 11px;
+      gap: 10px;
       min-height: 50px;
-      padding: 12px 23px;
+      padding: 12px 24px;
       border: 1px solid transparent;
       border-radius: 2px;
       font-size: 14px;
       font-weight: 700;
-      letter-spacing: .04em;
-      transition: transform .22s ease, box-shadow .22s ease, background .22s ease;
+      letter-spacing: .06em;
+      transition: transform .22s ease, background .22s ease, color .22s ease, box-shadow .22s ease;
     }
     .button:hover { transform: translateY(-2px); }
-    .button:focus-visible, a:focus-visible { outline: 3px solid var(--sky); outline-offset: 4px; }
-    .button-primary { color: var(--navy); background: var(--sand); box-shadow: 0 9px 22px rgba(1, 35, 59, .2); }
-    .button-primary:hover { background: #f0c77f; }
-    .button-outline { color: #fff; border-color: rgba(255,255,255,.58); }
-    .button-outline:hover { background: rgba(255,255,255,.1); }
-    .arrow { font-size: 18px; line-height: 1; }
+    .button:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible {
+      outline: 3px solid var(--gold);
+      outline-offset: 3px;
+    }
+    .button-primary {
+      color: var(--tea-deep);
+      background: var(--gold);
+      box-shadow: 0 10px 24px rgba(201, 155, 59, 0.28);
+    }
+    .button-primary:hover {
+      background: #dcad47;
+      box-shadow: 0 14px 28px rgba(201, 155, 59, 0.35);
+    }
+    .button-outline {
+      border-color: rgba(243, 223, 162, 0.65);
+      color: var(--gold-light);
+    }
+    .button-outline:hover {
+      background: rgba(243, 223, 162, 0.12);
+      color: #fff;
+    }
+    .icon-arrow { font-size: 18px; line-height: 1; transition: transform .2s ease; }
+    .button:hover .icon-arrow { transform: translateX(4px); }
 
     /* Header */
-    .site-header {
+    .header {
       position: absolute;
-      z-index: 10;
+      z-index: 20;
       width: 100%;
       color: #fff;
-      border-bottom: 1px solid rgba(255, 255, 255, .16);
+      border-bottom: 1px solid rgba(243, 223, 162, 0.16);
     }
-    .nav { display: flex; align-items: center; justify-content: space-between; min-height: 78px; }
-    .brand { display: flex; align-items: center; gap: 12px; font: 700 20px/1 "Noto Serif TC", serif; letter-spacing: .11em; }
-    .brand-mark {
+    .nav {
+      display: flex;
+      min-height: 80px;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font: 700 22px/1 "Noto Serif TC", serif;
+      letter-spacing: .12em;
+      color: #fff;
+    }
+    .brand-seal {
+      position: relative;
+      width: 32px;
+      height: 32px;
+      border: 1px solid var(--gold);
+      border-radius: 4px;
       display: grid;
-      width: 29px;
-      height: 29px;
       place-items: center;
-      border: 1px solid var(--sky);
-      border-radius: 50%;
-      color: var(--sky);
-      font: 700 19px/1 "Playfair Display", serif;
+      color: var(--gold);
+      font: 700 16px/1 "Noto Serif TC", serif;
+      background: rgba(201, 155, 59, 0.08);
+      box-shadow: inset 0 0 8px rgba(201, 155, 59, 0.18);
     }
-    .brand small { display: block; margin-top: 5px; color: rgba(255,255,255,.64); font: 600 8px/1 sans-serif; letter-spacing: .21em; }
-    .nav-links { display: flex; align-items: center; gap: 29px; font-size: 13px; font-weight: 500; }
-    .nav-links a { position: relative; padding: 6px 0; }
-    .nav-links a:not(.nav-cta)::after { content: ""; position: absolute; right: 0; bottom: 0; left: 0; height: 1px; background: var(--sky); transform: scaleX(0); transform-origin: right; transition: transform .22s; }
-    .nav-links a:not(.nav-cta):hover::after { transform: scaleX(1); transform-origin: left; }
-    .nav-cta { padding: 8px 16px !important; border: 1px solid rgba(255,255,255,.55); }
-    .nav-cta:hover { color: var(--navy); background: #fff; }
-    .menu-toggle { display: none; border: 0; color: #fff; background: transparent; }
+    .brand-text small {
+      display: block;
+      margin-top: 4px;
+      color: rgba(243, 223, 162, 0.72);
+      font: 500 9px/1 "DM Mono", monospace;
+      letter-spacing: .18em;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .nav-links a {
+      position: relative;
+      padding: 6px 0;
+      color: rgba(255, 255, 255, 0.88);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--gold-light); }
+    .nav-links a:not(.nav-cta)::after {
+      content: "";
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 1px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform .25s ease;
+    }
+    .nav-links a:not(.nav-cta):hover::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+    .nav-cta {
+      padding: 9px 18px !important;
+      border: 1px solid var(--gold);
+      color: var(--gold-light) !important;
+      border-radius: 2px;
+      transition: background .2s, color .2s !important;
+    }
+    .nav-cta:hover {
+      background: var(--gold);
+      color: var(--tea-deep) !important;
+    }
+    .menu-button {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border: 0;
+      color: var(--gold-light);
+      background: transparent;
+      font-size: 24px;
+    }
 
-    /* Hero */
-    .hero { position: relative; min-height: 704px; overflow: hidden; color: #fff; background: var(--navy); }
+    /* Hero Section */
+    .hero {
+      position: relative;
+      min-height: 740px;
+      overflow: hidden;
+      color: #fff;
+      background: var(--tea-dark);
+    }
     .hero::before {
       content: "";
       position: absolute;
       inset: 0;
-      opacity: .36;
-      background: radial-gradient(circle at 76% 45%, rgba(55, 167, 212, .75), transparent 23%), linear-gradient(117deg, rgba(4,25,45,.22) 0 48%, rgba(5,47,78,.82) 78%);
+      background:
+        radial-gradient(circle at 68% 36%, rgba(201, 155, 59, 0.22), transparent 26%),
+        radial-gradient(circle at 20% 80%, rgba(140, 93, 24, 0.16), transparent 30%),
+        linear-gradient(125deg, #120f0c 0%, #1b1712 50%, #292015 100%);
     }
     .hero::after {
       content: "";
       position: absolute;
-      top: 0;
-      right: -180px;
-      width: 760px;
-      height: 760px;
-      border: 1px solid rgba(153,220,240,.22);
+      top: -260px;
+      right: -200px;
+      width: 680px;
+      height: 680px;
+      border: 1px solid rgba(201, 155, 59, 0.18);
       border-radius: 50%;
-      box-shadow: 0 0 0 62px rgba(153,220,240,.045), 0 0 0 180px rgba(153,220,240,.025);
+      box-shadow: 0 0 0 80px rgba(201, 155, 59, 0.035), 0 0 0 200px rgba(201, 155, 59, 0.015);
     }
-    .hero-grid { position: relative; z-index: 1; display: grid; grid-template-columns: 1.02fr .98fr; gap: 45px; align-items: center; min-height: 704px; padding: 122px 0 72px; }
-    .hero .eyebrow { color: var(--sky); }
-    .hero-title { max-width: 13ch; margin: 0; font: 900 clamp(42px, 5.5vw, 68px)/1.22 "Noto Serif TC", serif; letter-spacing: .075em; }
-    .hero-title .blue { color: var(--sky); }
-    .hero-lede { max-width: 42ch; margin: 26px 0 32px; color: rgba(255,255,255,.78); font-size: 16px; }
-    .hero-actions { display: flex; flex-wrap: wrap; gap: 13px; }
-    .hero-note { margin-top: 28px; color: rgba(255,255,255,.52); font-size: 11px; letter-spacing: .1em; }
-    .hero-art { position: relative; min-height: 453px; }
-    .sun { position: absolute; top: 2%; right: 14%; width: 166px; height: 166px; border-radius: 50%; background: #93d6e6; box-shadow: 0 0 65px rgba(145,215,233,.36); }
-    .mountain { position: absolute; right: -4%; bottom: 2%; width: 98%; height: 70%; clip-path: polygon(0 73%, 23% 42%, 37% 59%, 61% 10%, 73% 29%, 84% 0, 100% 37%, 100% 100%, 0 100%); background: linear-gradient(135deg, #0b7eac, #06446f 70%); opacity: .85; }
-    .mountain::after { content: ""; position: absolute; inset: 0; background: linear-gradient(155deg, transparent 38%, rgba(2,35,58,.72) 38.5% 100%); }
-    .coffee-vessel { position: absolute; z-index: 2; right: 17%; bottom: 0; width: 255px; filter: drop-shadow(0 22px 21px rgba(0,0,0,.23)); }
-    .dripper { position: relative; width: 205px; height: 132px; margin: 0 auto -5px; border: 4px solid #e9f8fa; border-top-width: 6px; border-radius: 10px 10px 44% 44%; background: linear-gradient(115deg, rgba(123,206,225,.5), rgba(26,118,161,.23)); clip-path: polygon(0 0,100% 0,78% 100%,22% 100%); }
-    .dripper::after { content: ""; position: absolute; inset: 18px 16px 0; border-top: 1px solid rgba(255,255,255,.6); border-left: 1px solid rgba(255,255,255,.25); transform: skewX(-17deg); }
-    .carafe { position: relative; width: 170px; height: 181px; margin: 0 auto; border: 4px solid #e9f8fa; border-radius: 9px 9px 39% 39% / 9px 9px 19% 19%; background: linear-gradient(90deg, rgba(110,211,229,.26), rgba(1,52,87,.52)); }
-    .carafe::before { content: ""; position: absolute; top: -16px; left: 27px; width: 108px; height: 20px; border: 4px solid #e9f8fa; border-bottom: 0; border-radius: 50% 50% 0 0; }
-    .carafe::after { content: ""; position: absolute; right: 16px; bottom: 24px; left: 16px; height: 60px; border-radius: 3px 3px 26px 26px; background: linear-gradient(90deg, rgba(133,67,26,.84), rgba(76,33,9,.92)); }
-    .art-label { position: absolute; z-index: 3; top: 50%; right: 2%; width: 114px; padding-left: 12px; border-left: 1px solid var(--sky); color: rgba(255,255,255,.78); font-size: 10px; line-height: 1.7; letter-spacing: .1em; }
-    .art-label strong { display: block; color: var(--sky); font: 600 20px/1 "Playfair Display", serif; }
-    .scroll-line { position: absolute; bottom: 23px; left: max(24px, calc((100% - 1120px) / 2)); z-index: 2; display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,.56); font-size: 10px; letter-spacing: .15em; }
-    .scroll-line::before { content: ""; width: 38px; height: 1px; background: currentColor; }
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 40px;
+      align-items: center;
+      min-height: 740px;
+      padding: 136px 0 76px;
+    }
+    .hero .eyebrow { color: var(--gold); }
+    .hero h1 {
+      margin: 0;
+      font: 900 clamp(44px, 5.6vw, 72px)/1.22 "Noto Serif TC", serif;
+      letter-spacing: .08em;
+    }
+    .hero h1 em {
+      color: var(--gold);
+      font-style: normal;
+      background: linear-gradient(135deg, #fff 20%, var(--gold-light) 60%, var(--gold) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-lede {
+      max-width: 44ch;
+      margin: 24px 0 32px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+    .hero-signature {
+      margin: 32px 0 0;
+      color: rgba(243, 223, 162, 0.58);
+      font: 500 10px/1.6 "DM Mono", monospace;
+      letter-spacing: .16em;
+    }
 
-    /* Intro */
-    .intro { padding: 118px 0; background: #fff; }
-    .intro-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(45px, 8vw, 105px); align-items: center; }
-    .intro-stamp { position: relative; min-height: 355px; }
-    .stamp-circle { position: absolute; inset: 13px auto auto 0; display: grid; width: 290px; height: 290px; place-items: center; border: 1px solid #9dd7e7; border-radius: 50%; color: var(--blue); text-align: center; }
-    .stamp-circle::before { content: ""; position: absolute; inset: 14px; border: 1px dashed #a5d9e6; border-radius: 50%; }
-    .stamp-circle strong { display: block; font: 700 43px/1 "Playfair Display", serif; letter-spacing: -.04em; }
-    .stamp-circle span { display: block; margin-top: 8px; font-size: 11px; font-weight: 700; letter-spacing: .14em; }
-    .stamp-card { position: absolute; right: 0; bottom: 0; width: 216px; padding: 21px 23px; color: #fff; background: var(--blue); box-shadow: var(--shadow); }
-    .stamp-card p { margin: 0; font-size: 12px; line-height: 1.8; }
-    .stamp-card b { display: block; margin-bottom: 8px; color: var(--sky); font: 600 12px/1 "Playfair Display", serif; letter-spacing: .14em; }
-    .intro .section-copy { font-size: 16px; }
-    .intro-link { display: inline-flex; gap: 10px; margin-top: 28px; padding-bottom: 4px; border-bottom: 1px solid var(--blue); color: var(--blue); font-size: 14px; font-weight: 700; }
+    /* Hero CSS Illustration */
+    .hero-visual { position: relative; height: 460px; }
+    .sun-disc {
+      position: absolute;
+      top: 30px;
+      right: 12%;
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #f6e6be 0%, #caa146 100%);
+      box-shadow: 0 0 80px rgba(201, 155, 59, 0.35);
+      opacity: .92;
+    }
+    .mountain-back, .mountain-front {
+      position: absolute;
+      right: -8%;
+      bottom: -2px;
+      left: -8%;
+    }
+    .mountain-back {
+      height: 72%;
+      clip-path: polygon(0 76%, 22% 44%, 39% 60%, 61% 22%, 78% 46%, 100% 18%, 100% 100%, 0 100%);
+      background: linear-gradient(145deg, #443522, #1f1811 75%);
+      opacity: .75;
+    }
+    .mountain-front {
+      height: 54%;
+      clip-path: polygon(0 80%, 28% 48%, 48% 66%, 70% 32%, 85% 52%, 100% 28%, 100% 100%, 0 100%);
+      background: linear-gradient(140deg, #7c5d2b, #2b1f13 85%);
+      opacity: .95;
+    }
+    /* Tea Sprout / Leaves CSS Art */
+    .tea-sprout {
+      position: absolute;
+      z-index: 3;
+      right: 22%;
+      bottom: 24px;
+      width: 240px;
+      height: 310px;
+    }
+    .sprout-stem {
+      position: absolute;
+      bottom: 0;
+      left: 118px;
+      width: 4px;
+      height: 260px;
+      background: linear-gradient(to top, #7d5926, #c99b3b);
+      border-radius: 4px;
+      transform: rotate(8deg);
+      transform-origin: bottom;
+    }
+    .sprout-leaf {
+      position: absolute;
+      width: 76px;
+      height: 38px;
+      border: 2px solid var(--gold-light);
+      border-radius: 100% 0 100% 0;
+      background: linear-gradient(135deg, rgba(201, 155, 59, 0.45), rgba(77, 53, 20, 0.8));
+      box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+    }
+    .sprout-leaf::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 4px;
+      width: 64px;
+      height: 1px;
+      background: rgba(243, 223, 162, 0.7);
+      transform: rotate(-26deg);
+      transform-origin: left;
+    }
+    .sprout-leaf-1 { top: 40px; left: 38px; transform: rotate(-38deg); }
+    .sprout-leaf-2 { top: 82px; right: 28px; transform: rotate(18deg) scaleX(-1); }
+    .sprout-leaf-3 { top: 142px; left: 24px; transform: rotate(-44deg) scale(.85); }
+    .sprout-leaf-4 { top: 188px; right: 14px; transform: rotate(22deg) scaleX(-1) scale(.76); }
+    .sprout-bud {
+      position: absolute;
+      top: 10px;
+      left: 108px;
+      width: 18px;
+      height: 44px;
+      border: 2px solid #fff;
+      border-radius: 50% 50% 50% 50% / 70% 70% 30% 30%;
+      background: linear-gradient(to top, var(--gold), #fff);
+      box-shadow: 0 0 18px rgba(243, 223, 162, 0.6);
+      transform: rotate(6deg);
+    }
+    .origin-badge {
+      position: absolute;
+      z-index: 4;
+      top: 50%;
+      right: 0;
+      width: 140px;
+      padding-left: 14px;
+      border-left: 1px solid var(--gold);
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 11px;
+      line-height: 1.7;
+      letter-spacing: .08em;
+    }
+    .origin-badge b {
+      display: block;
+      color: var(--gold-light);
+      font: 500 17px/1.2 "DM Mono", monospace;
+    }
+    .scroll-hint {
+      position: absolute;
+      bottom: 24px;
+      left: max(26px, calc((100% - 1140px) / 2));
+      z-index: 2;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      color: rgba(243, 223, 162, 0.55);
+      font: 500 10px/1 "DM Mono", monospace;
+      letter-spacing: .15em;
+    }
+    .scroll-hint::before { content: ""; width: 36px; height: 1px; background: currentColor; }
 
-    /* Coffees */
-    .coffee-section { padding: 110px 0 120px; background: var(--mist); }
-    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 43px; }
-    .section-head .section-copy { max-width: 35ch; margin: 0; font-size: 14px; }
-    .coffee-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 19px; }
-    .coffee-card { position: relative; min-height: 384px; overflow: hidden; color: #fff; background: var(--navy); box-shadow: var(--shadow); }
-    .coffee-card::before { content: ""; position: absolute; right: -63px; bottom: -87px; width: 238px; height: 238px; border: 1px solid rgba(255,255,255,.29); border-radius: 50%; }
-    .coffee-card::after { content: ""; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background: linear-gradient(160deg, transparent 42%, rgba(0,0,0,.28)); pointer-events: none; }
-    .coffee-card:nth-child(2) { background: #106396; }
-    .coffee-card:nth-child(3) { background: #164c68; }
-    .coffee-content { position: relative; z-index: 1; display: flex; flex-direction: column; min-height: 384px; padding: 29px; }
-    .coffee-number { color: var(--sky); font: 600 13px/1 "Playfair Display", serif; letter-spacing: .08em; }
-    .coffee-origin { margin: auto 0 7px; color: rgba(255,255,255,.63); font-size: 11px; font-weight: 600; letter-spacing: .14em; }
-    .coffee-card h3 { margin: 0; font: 700 27px/1.35 "Noto Serif TC", serif; letter-spacing: .05em; }
-    .coffee-notes { margin: 11px 0 22px; color: rgba(255,255,255,.75); font-size: 13px; }
-    .coffee-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 18px; border-top: 1px solid rgba(255,255,255,.25); }
-    .price { font-size: 14px; font-weight: 700; }
-    .add-button { padding: 5px 0; border: 0; color: #fff; background: none; font-size: 12px; font-weight: 700; letter-spacing: .07em; }
-    .add-button:hover { color: var(--sand); }
+    /* Story Section */
+    .story { padding: 120px 0; background: var(--paper); }
+    .story-grid {
+      display: grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap: clamp(48px, 9vw, 120px);
+      align-items: center;
+    }
+    .story-window {
+      position: relative;
+      min-height: 410px;
+      overflow: hidden;
+      background: #ebdcc8;
+      box-shadow: var(--shadow);
+    }
+    .story-window::before {
+      content: "";
+      position: absolute;
+      inset: 24px;
+      border: 1px solid rgba(140, 93, 24, 0.28);
+    }
+    .window-sun {
+      position: absolute;
+      top: 60px;
+      right: 56px;
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      background: #d9ad51;
+    }
+    .window-hill-1, .window-hill-2 {
+      position: absolute;
+      right: -10%;
+      bottom: -2%;
+      left: -10%;
+      clip-path: polygon(0 75%, 25% 42%, 46% 64%, 68% 18%, 84% 50%, 100% 26%, 100% 100%, 0 100%);
+    }
+    .window-hill-1 { height: 75%; background: #9c7b44; }
+    .window-hill-2 { height: 55%; background: #4e3a1f; transform: scaleX(-1); }
+    .window-tag {
+      position: absolute;
+      z-index: 2;
+      right: 28px;
+      bottom: 26px;
+      color: #fff;
+      font: 500 10px/1.7 "DM Mono", monospace;
+      letter-spacing: .12em;
+      text-align: right;
+    }
+    .window-tag b { display: block; color: var(--gold-light); font-size: 15px; }
+    .story-note {
+      position: absolute;
+      z-index: 3;
+      bottom: 0;
+      left: 0;
+      width: 228px;
+      padding: 22px;
+      color: #fff;
+      background: var(--tea-dark);
+      box-shadow: var(--shadow);
+    }
+    .story-note b {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--gold);
+      font: 500 10px/1 "DM Mono", monospace;
+      letter-spacing: .14em;
+    }
+    .story-note p { margin: 0; font-size: 13px; line-height: 1.8; color: rgba(255,255,255,0.85); }
+    .story-link {
+      display: inline-flex;
+      gap: 10px;
+      margin-top: 28px;
+      padding-bottom: 4px;
+      border-bottom: 1px solid var(--gold);
+      color: var(--gold-dark);
+      font-size: 14px;
+      font-weight: 700;
+      transition: color .2s;
+    }
+    .story-link:hover { color: var(--gold); }
 
-    /* Brew process */
-    .brew { overflow: hidden; padding: 118px 0; background: #fff; }
-    .brew-grid { display: grid; grid-template-columns: .93fr 1.07fr; gap: clamp(44px, 9vw, 112px); align-items: center; }
-    .brew-visual { position: relative; min-height: 396px; border: 1px solid var(--line); background: linear-gradient(140deg, #f4fafb 0 50%, #e5f4f7 50%); }
-    .brew-visual::before { content: ""; position: absolute; top: 35px; left: 34px; width: 70px; height: 1px; background: var(--blue); box-shadow: 0 9px 0 var(--blue), 0 18px 0 var(--blue); }
-    .pour-ring { position: absolute; top: 71px; right: 48px; width: 240px; height: 240px; border: 35px solid rgba(12,91,149,.13); border-radius: 50%; }
-    .pour-ring::after { content: ""; position: absolute; top: 45px; left: 45px; width: 80px; height: 80px; border: 3px solid var(--blue); border-radius: 50%; }
-    .brew-v60 { position: absolute; bottom: 35px; left: 51%; width: 178px; height: 150px; border: 4px solid var(--blue); background: rgba(255,255,255,.54); clip-path: polygon(0 0,100% 0,73% 100%,27% 100%); transform: translateX(-50%); }
-    .brew-v60::before { content: ""; position: absolute; top: 14px; right: 16px; bottom: 0; left: 16px; border-left: 1px solid #8dcce0; border-right: 1px solid #8dcce0; transform: skewX(-11deg); }
-    .brew-caption { position: absolute; right: 25px; bottom: 21px; color: var(--blue); font: 600 10px/1.4 "Playfair Display", serif; letter-spacing: .13em; text-align: right; }
-    .brew-steps { display: grid; gap: 0; margin: 28px 0 0; padding: 0; list-style: none; }
-    .brew-steps li { display: grid; grid-template-columns: 43px 1fr; gap: 15px; padding: 17px 0; border-top: 1px solid var(--line); }
-    .brew-steps li:last-child { border-bottom: 1px solid var(--line); }
-    .step-no { color: var(--blue); font: 600 15px/1.7 "Playfair Display", serif; }
-    .step-copy b { display: block; font-size: 15px; }
-    .step-copy span { color: var(--muted); font-size: 13px; }
+    /* Selection Section */
+    .selection { padding: 116px 0 124px; background: var(--cream); }
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 32px;
+      margin-bottom: 46px;
+    }
+    .section-head .copy { max-width: 36ch; margin: 0; font-size: 15px; }
+    .tea-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .tea-card {
+      display: flex;
+      flex-direction: column;
+      min-height: 470px;
+      background: #fff;
+      box-shadow: 0 1px 0 var(--line);
+      border: 1px solid var(--line);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+    }
+    .tea-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+      border-color: var(--gold);
+    }
+    /* Canister / Pouch Visual */
+    .canister-visual {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      background: #eee5d7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .tea-card:nth-child(2) .canister-visual { background: #e8ded0; }
+    .tea-card:nth-child(3) .canister-visual { background: #dfd4c5; }
+    .canister {
+      position: relative;
+      width: 148px;
+      height: 185px;
+      padding: 24px 16px;
+      color: #fff;
+      background: var(--tea-dark);
+      box-shadow: 10px 14px 28px rgba(27, 23, 18, 0.22);
+      border-radius: 4px;
+      border-top: 4px solid var(--gold);
+    }
+    .tea-card:nth-child(2) .canister { background: #3b2c1b; border-top-color: #f1b343; }
+    .tea-card:nth-child(3) .canister { background: #261f18; border-top-color: #9c6c2e; }
+    .canister-seal {
+      width: 24px;
+      height: 24px;
+      border: 1px solid var(--gold);
+      border-radius: 2px;
+      display: grid;
+      place-items: center;
+      color: var(--gold);
+      font: 700 13px/1 "Noto Serif TC", serif;
+      margin-bottom: 14px;
+    }
+    .canister-name {
+      font: 700 17px/1.3 "Noto Serif TC", serif;
+      letter-spacing: .08em;
+      color: #fff;
+    }
+    .canister-spec {
+      display: block;
+      margin-top: 6px;
+      color: rgba(243, 223, 162, 0.75);
+      font: 400 8px/1.4 "DM Mono", monospace;
+      letter-spacing: .12em;
+    }
+    .card-body {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 24px 24px 22px;
+    }
+    .card-index {
+      color: var(--gold-dark);
+      font: 500 10px/1 "DM Mono", monospace;
+      letter-spacing: .1em;
+    }
+    .card-body h3 {
+      margin: 12px 0 6px;
+      font: 700 22px/1.38 "Noto Serif TC", serif;
+      letter-spacing: .06em;
+      color: var(--ink);
+    }
+    .card-origin { margin: 0; color: var(--muted); font-size: 13px; }
+    .flavour { display: flex; flex-wrap: wrap; gap: 6px; margin: 18px 0 auto; }
+    .flavour span {
+      padding: 3px 9px;
+      border: 1px solid var(--line);
+      color: var(--amber);
+      font-size: 11px;
+      background: #fbf9f5;
+    }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 20px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+    .price { font: 500 14px/1 "DM Mono", monospace; color: var(--tea-dark); font-weight: 700; }
+    .taste-button {
+      padding: 6px 12px;
+      border: 1px solid var(--gold);
+      color: var(--gold-dark);
+      background: transparent;
+      font-size: 12px;
+      font-weight: 700;
+      border-radius: 2px;
+      transition: background .2s, color .2s;
+    }
+    .taste-button:hover {
+      background: var(--gold);
+      color: var(--tea-deep);
+    }
 
-    /* CTA and Footer */
-    .visit { position: relative; overflow: hidden; padding: 96px 0; color: #fff; background: var(--navy); text-align: center; }
-    .visit::before, .visit::after { content: ""; position: absolute; width: 370px; height: 370px; border: 1px solid rgba(117,198,232,.21); border-radius: 50%; }
-    .visit::before { top: -225px; left: -90px; }
-    .visit::after { right: -125px; bottom: -235px; }
-    .visit .wrap { position: relative; z-index: 1; }
-    .visit .eyebrow { justify-content: center; color: var(--sky); }
-    .visit .section-title { font-size: clamp(30px, 4vw, 45px); }
-    .visit p:not(.eyebrow) { max-width: 48ch; margin: 19px auto 28px; color: rgba(255,255,255,.73); }
-    .subscribe { display: flex; max-width: 500px; margin: 0 auto; border: 1px solid rgba(255,255,255,.5); }
-    .subscribe input { min-width: 0; flex: 1; padding: 13px 17px; border: 0; outline: none; color: #fff; background: transparent; }
-    .subscribe input::placeholder { color: rgba(255,255,255,.55); }
-    .subscribe button { padding: 0 22px; border: 0; color: var(--navy); background: var(--sand); font-size: 13px; font-weight: 700; white-space: nowrap; }
-    .subscribe button:hover { background: #f0c77f; }
-    footer { color: rgba(255,255,255,.67); background: #031c31; }
-    .footer-top { display: grid; grid-template-columns: 1.7fr 1fr 1fr; gap: 40px; padding: 58px 0 38px; }
+    /* Ritual / Brewing Section */
+    .ritual {
+      position: relative;
+      overflow: hidden;
+      padding: 120px 0;
+      color: #f8f6f0;
+      background: var(--tea-dark);
+    }
+    .ritual::before {
+      content: "";
+      position: absolute;
+      top: -180px;
+      left: -140px;
+      width: 480px;
+      height: 480px;
+      border: 1px solid rgba(201, 155, 59, 0.16);
+      border-radius: 50%;
+      box-shadow: 0 0 0 80px rgba(201, 155, 59, 0.04);
+    }
+    .ritual-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      gap: clamp(45px, 8vw, 105px);
+      align-items: center;
+    }
+    .ritual .eyebrow { color: var(--gold); }
+    .ritual .title strong { color: var(--gold); }
+    .ritual .copy { color: rgba(255, 255, 255, 0.72); }
+
+    /* Pure CSS Tea Brewing Ritual Drawing */
+    .ritual-drawing {
+      position: relative;
+      min-height: 420px;
+      border: 1px solid rgba(201, 155, 59, 0.32);
+      background: rgba(255, 255, 255, 0.025);
+    }
+    .ritual-drawing::before {
+      content: "";
+      position: absolute;
+      top: 28px;
+      left: 28px;
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      box-shadow: 0 9px 0 var(--gold), 0 18px 0 var(--gold);
+    }
+    .tea-steam {
+      position: absolute;
+      top: 55px;
+      left: 50%;
+      width: 160px;
+      height: 120px;
+      transform: translateX(-50%);
+      opacity: .75;
+    }
+    .steam-line {
+      position: absolute;
+      bottom: 0;
+      width: 2px;
+      height: 80px;
+      background: linear-gradient(to top, rgba(243, 223, 162, 0.8), transparent);
+      border-radius: 2px;
+    }
+    .steam-1 { left: 35%; height: 95px; transform: rotate(-12deg); }
+    .steam-2 { left: 50%; height: 110px; }
+    .steam-3 { left: 65%; height: 90px; transform: rotate(12deg); }
+    .gaiwan-lid {
+      position: absolute;
+      bottom: 182px;
+      left: 50%;
+      width: 140px;
+      height: 24px;
+      border: 2px solid var(--gold-light);
+      border-radius: 50% 50% 0 0;
+      background: rgba(201, 155, 59, 0.2);
+      transform: translateX(-50%);
+    }
+    .gaiwan-knob {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      width: 20px;
+      height: 12px;
+      border: 2px solid var(--gold-light);
+      border-radius: 4px 4px 0 0;
+      transform: translateX(-50%);
+    }
+    .gaiwan-bowl {
+      position: absolute;
+      bottom: 104px;
+      left: 50%;
+      width: 168px;
+      height: 82px;
+      border: 3px solid var(--gold-light);
+      border-radius: 6px 6px 70px 70px;
+      background: linear-gradient(135deg, rgba(201, 155, 59, 0.3), rgba(27, 23, 18, 0.6));
+      transform: translateX(-50%);
+    }
+    .gaiwan-bowl::after {
+      content: "";
+      position: absolute;
+      bottom: 8px;
+      left: 14px;
+      right: 14px;
+      height: 36px;
+      border-radius: 0 0 54px 54px;
+      background: linear-gradient(to top, rgba(201, 155, 59, 0.8), rgba(243, 223, 162, 0.3));
+    }
+    .gaiwan-saucer {
+      position: absolute;
+      bottom: 86px;
+      left: 50%;
+      width: 196px;
+      height: 18px;
+      border: 2px solid var(--gold-light);
+      border-radius: 50%;
+      background: rgba(201, 155, 59, 0.25);
+      transform: translateX(-50%);
+    }
+    .ritual-caption {
+      position: absolute;
+      right: 24px;
+      bottom: 22px;
+      color: var(--gold-light);
+      font: 400 9px/1.8 "DM Mono", monospace;
+      letter-spacing: .1em;
+      text-align: right;
+    }
+    .method-list {
+      display: grid;
+      gap: 0;
+      margin: 30px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .method-list li {
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 16px;
+      padding: 18px 0;
+      border-top: 1px solid rgba(201, 155, 59, 0.24);
+    }
+    .method-list li:last-child { border-bottom: 1px solid rgba(201, 155, 59, 0.24); }
+    .method-no { color: var(--gold); font: 500 15px/1.6 "DM Mono", monospace; }
+    .method-text b { display: block; font-size: 16px; color: #fff; margin-bottom: 4px; }
+    .method-text span { color: rgba(255, 255, 255, 0.68); font-size: 13px; line-height: 1.7; }
+
+    /* Tasting / Salon Section */
+    .tasting { padding: 116px 0; background: var(--paper); }
+    .tasting-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(44px, 8vw, 105px);
+      align-items: center;
+    }
+    .salon-card {
+      position: relative;
+      min-height: 380px;
+      overflow: hidden;
+      color: #fff;
+      background: var(--tea-dark);
+      box-shadow: var(--shadow);
+      border-top: 3px solid var(--gold);
+    }
+    .salon-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .6;
+      background:
+        repeating-linear-gradient(125deg, transparent 0 58px, rgba(201, 155, 59, 0.12) 59px 60px, transparent 61px 90px);
+    }
+    .salon-inner {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      min-height: 380px;
+      flex-direction: column;
+      padding: 34px;
+    }
+    .salon-kicker { margin: 0; color: var(--gold); font: 400 10px/1 "DM Mono", monospace; letter-spacing: .15em; }
+    .salon-inner h3 {
+      margin: 16px 0 10px;
+      font: 700 28px/1.35 "Noto Serif TC", serif;
+      letter-spacing: .08em;
+      color: #fff;
+    }
+    .salon-inner p:not(.salon-kicker) {
+      max-width: 32ch;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 14px;
+    }
+    /* Reservation Form */
+    .reserve-form { margin-top: 24px; display: grid; gap: 12px; }
+    .form-group { display: grid; gap: 4px; }
+    .form-group label {
+      font-size: 11px;
+      color: var(--gold-light);
+      font-family: "DM Mono", monospace;
+      letter-spacing: .08em;
+    }
+    .reserve-form input, .reserve-form select {
+      width: 100%;
+      height: 44px;
+      padding: 0 14px;
+      border: 1px solid rgba(243, 223, 162, 0.35);
+      border-radius: 2px;
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff;
+      font-size: 13px;
+    }
+    .reserve-form select option { background: var(--tea-deep); color: #fff; }
+    .reserve-form input:focus, .reserve-form select:focus {
+      border-color: var(--gold);
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .salon-submit {
+      margin-top: 8px;
+      width: 100%;
+      min-height: 46px;
+      border: 0;
+      background: var(--gold);
+      color: var(--tea-deep);
+      font-weight: 700;
+      letter-spacing: .08em;
+      border-radius: 2px;
+      transition: background .2s;
+    }
+    .salon-submit:hover { background: #dcad47; }
+
+    /* Details Grid */
+    .details { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; margin: 30px 0 0; }
+    .detail { padding: 16px 0; border-top: 1px solid var(--line); }
+    .detail:nth-last-child(-n+2) { border-bottom: 1px solid var(--line); }
+    .detail:nth-child(odd) { padding-right: 18px; }
+    .detail:nth-child(even) { padding-left: 18px; border-left: 1px solid var(--line); }
+    .detail b {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--gold-dark);
+      font: 500 10px/1 "DM Mono", monospace;
+      letter-spacing: .1em;
+    }
+    .detail span { font-size: 13.5px; color: var(--ink); }
+
+    /* Footer */
+    footer { color: rgba(255, 255, 255, 0.72); background: var(--tea-deep); }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr 1fr;
+      gap: 42px;
+      padding: 60px 0 40px;
+    }
     .footer-brand { color: #fff; }
-    .footer-brand p { max-width: 31ch; margin: 16px 0 0; font-size: 13px; }
-    .footer-heading { margin: 0 0 15px; color: var(--sky); font-size: 11px; font-weight: 700; letter-spacing: .14em; }
+    .footer-brand p { max-width: 32ch; margin: 16px 0 0; font-size: 13px; color: rgba(255,255,255,0.65); }
+    .footer-heading {
+      margin: 0 0 16px;
+      color: var(--gold);
+      font: 500 10px/1 "DM Mono", monospace;
+      letter-spacing: .15em;
+    }
     .footer-list { margin: 0; padding: 0; list-style: none; font-size: 13px; }
-    .footer-list li + li { margin-top: 8px; }
-    .footer-list a:hover { color: #fff; }
-    .footer-bottom { display: flex; justify-content: space-between; gap: 24px; padding: 17px 0; border-top: 1px solid rgba(255,255,255,.14); color: rgba(255,255,255,.43); font-size: 11px; letter-spacing: .05em; }
+    .footer-list li + li { margin-top: 9px; }
+    .footer-list a { color: rgba(255, 255, 255, 0.75); transition: color .2s; }
+    .footer-list a:hover { color: var(--gold-light); }
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 20px 0;
+      border-top: 1px solid rgba(243, 223, 162, 0.14);
+      color: rgba(255, 255, 255, 0.45);
+      font: 400 10px/1.5 "DM Mono", monospace;
+      letter-spacing: .08em;
+    }
 
-    .toast { position: fixed; right: 22px; bottom: 22px; z-index: 20; max-width: min(330px, calc(100% - 44px)); padding: 13px 18px; border-left: 3px solid var(--sand); color: #fff; background: var(--navy); box-shadow: var(--shadow); opacity: 0; pointer-events: none; transform: translateY(12px); transition: opacity .25s, transform .25s; font-size: 13px; }
-    .toast.show { opacity: 1; transform: translateY(0); }
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      right: 24px;
+      bottom: 24px;
+      z-index: 50;
+      max-width: min(360px, calc(100% - 48px));
+      padding: 14px 18px;
+      border-left: 3px solid var(--gold);
+      color: #fff;
+      background: var(--tea-dark);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.35);
+      font-size: 13.5px;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: opacity .25s ease, transform .25s ease;
+      line-height: 1.6;
+    }
+    .toast.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
 
-    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    /* Scroll Reveal */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .65s ease, transform .65s ease; }
+    .reveal.in { opacity: 1; transform: translateY(0); }
 
-    @media (max-width: 820px) {
-      .nav { min-height: 68px; }
-      .menu-toggle { display: block; width: 42px; height: 42px; font-size: 23px; }
-      .nav-links { position: absolute; top: 68px; right: 0; left: 0; display: grid; gap: 0; max-height: 0; overflow: hidden; background: #05233c; transition: max-height .27s ease; }
-      .nav-links.open { max-height: 300px; border-top: 1px solid rgba(255,255,255,.12); }
-      .nav-links a { padding: 13px 24px; border-bottom: 1px solid rgba(255,255,255,.09); }
-      .nav-links .nav-cta { margin: 11px 24px; text-align: center; }
-      .hero, .hero-grid { min-height: 710px; }
-      .hero-grid { grid-template-columns: 1fr; padding-top: 115px; }
-      .hero-art { min-height: 278px; margin-top: -35px; }
-      .sun { right: 14%; width: 114px; height: 114px; }
-      .mountain { width: 82%; height: 92%; }
-      .coffee-vessel { right: 15%; transform: scale(.72); transform-origin: bottom right; }
-      .art-label { top: 44%; right: 1%; }
-      .intro-grid, .brew-grid { grid-template-columns: 1fr; }
-      .intro-stamp { max-width: 510px; width: 100%; }
-      .coffee-grid { grid-template-columns: 1fr 1fr; }
-      .coffee-card:last-child { grid-column: span 2; }
-      .footer-top { grid-template-columns: 1.4fr 1fr; }
+    /* Responsive */
+    @media (max-width: 860px) {
+      .nav { min-height: 70px; }
+      .menu-button { display: block; }
+      .nav-links {
+        position: absolute;
+        top: 70px;
+        right: 0;
+        left: 0;
+        display: grid;
+        gap: 0;
+        max-height: 0;
+        overflow: hidden;
+        background: #14110d;
+        transition: max-height .3s ease;
+      }
+      .nav-links.open { max-height: 320px; border-top: 1px solid rgba(243, 223, 162, 0.16); }
+      .nav-links a { padding: 14px 28px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+      .nav-links .nav-cta { margin: 12px 28px; text-align: center; }
+      .hero, .hero-grid { min-height: 720px; }
+      .hero-grid { grid-template-columns: 1fr; padding-top: 110px; }
+      .hero-visual { height: 280px; margin-top: -30px; }
+      .sun-disc { top: 10px; right: 16%; width: 120px; height: 120px; }
+      .tea-sprout { right: 18%; bottom: -20px; transform: scale(.78); transform-origin: bottom right; }
+      .story-grid, .ritual-grid, .tasting-grid { grid-template-columns: 1fr; }
+      .story-window { max-width: 560px; width: 100%; }
+      .tea-grid { grid-template-columns: repeat(2, 1fr); }
+      .tea-card:last-child { grid-column: span 2; }
+      .footer-grid { grid-template-columns: 1.4fr 1fr; }
       .footer-brand { grid-column: span 2; }
     }
 
-    @media (max-width: 560px) {
-      .wrap { width: min(100% - 34px, 1120px); }
+    @media (max-width: 580px) {
+      .container { width: min(100% - 34px, 1140px); }
       .hero, .hero-grid { min-height: 680px; }
-      .hero-grid { padding-top: 100px; padding-bottom: 48px; }
-      .hero-title { font-size: 40px; }
-      .hero-lede { margin: 18px 0 23px; font-size: 14px; }
-      .hero-art { min-height: 240px; }
-      .art-label { display: none; }
-      .scroll-line { bottom: 12px; left: 17px; }
-      .intro, .coffee-section, .brew { padding: 76px 0; }
-      .stamp-circle { width: 245px; height: 245px; }
-      .stamp-card { width: 185px; padding: 16px; }
+      .hero-grid { padding-top: 96px; padding-bottom: 44px; }
+      .hero h1 { font-size: 38px; }
+      .hero-lede { margin: 18px 0 24px; font-size: 14.5px; }
+      .hero-visual { height: 240px; }
+      .origin-badge { display: none; }
+      .scroll-hint { bottom: 12px; left: 18px; }
+      .story, .selection, .ritual, .tasting { padding: 76px 0; }
+      .story-window { min-height: 330px; }
+      .story-note { width: 190px; padding: 16px; }
       .section-head { display: block; }
-      .section-head .section-copy { margin-top: 15px; }
-      .coffee-grid { grid-template-columns: 1fr; }
-      .coffee-card, .coffee-card:last-child { grid-column: auto; min-height: 330px; }
-      .coffee-content { min-height: 330px; }
-      .brew-visual { min-height: 310px; }
-      .pour-ring { top: 48px; right: 25px; width: 190px; height: 190px; border-width: 27px; }
-      .visit { padding: 76px 0; }
-      .subscribe { display: block; border: 0; }
-      .subscribe input { width: 100%; border: 1px solid rgba(255,255,255,.5); }
-      .subscribe button { width: 100%; min-height: 48px; margin-top: 9px; }
-      .footer-top { grid-template-columns: 1fr; gap: 30px; }
+      .section-head .copy { margin-top: 14px; }
+      .tea-grid { grid-template-columns: 1fr; }
+      .tea-card:last-child { grid-column: auto; }
+      .ritual-drawing { min-height: 320px; }
+      .gaiwan-lid, .gaiwan-bowl, .gaiwan-saucer, .tea-steam { transform: translateX(-50%) scale(.8); }
+      .details { grid-template-columns: 1fr; }
+      .detail, .detail:nth-last-child(-n+2) { border-bottom: 0; }
+      .detail:first-child { border-top: 1px solid var(--line); }
+      .detail:last-child { border-bottom: 1px solid var(--line); }
+      .detail:nth-child(even) { padding-left: 0; border-left: 0; }
+      .footer-grid { grid-template-columns: 1fr; gap: 30px; }
       .footer-brand { grid-column: auto; }
       .footer-bottom { display: block; }
       .footer-bottom span + span { display: block; margin-top: 6px; }
@@ -290,187 +960,369 @@
   </style>
 </head>
 <body>
-  <header class="site-header" id="top">
-    <nav class="nav wrap" aria-label="主要導覽">
-      <a class="brand" href="#top" aria-label="回到藍天咖啡首頁">
-        <span class="brand-mark">B</span>
-        <span>藍天咖啡<small>BLUE SKY COFFEE</small></span>
+  <!-- Header -->
+  <header class="header" id="top">
+    <nav class="nav container" aria-label="主要導覽">
+      <a class="brand" href="#top" aria-label="回到茶香首頁">
+        <span class="brand-seal" aria-hidden="true">茶</span>
+        <span class="brand-text">茶香<small>CHA XIANG TEA</small></span>
       </a>
-      <button class="menu-toggle" type="button" aria-label="開啟導覽選單" aria-expanded="false" aria-controls="navLinks">☰</button>
+      <button class="menu-button" type="button" aria-label="開啟導覽選單" aria-expanded="false" aria-controls="navLinks">☰</button>
       <div class="nav-links" id="navLinks">
-        <a href="#story">我們的堅持</a>
-        <a href="#coffee">本季選豆</a>
-        <a href="#brew">沖煮日常</a>
-        <a class="nav-cta" href="#visit">訂閱風味通信</a>
+        <a href="#story">茶席理念</a>
+        <a href="#selection">珍稀茗茶</a>
+        <a href="#ritual">品茗之道</a>
+        <a class="nav-cta" href="#tasting">預約品嘗</a>
       </div>
     </nav>
   </header>
 
   <main>
+    <!-- Hero Section -->
     <section class="hero" aria-labelledby="heroTitle">
-      <div class="hero-grid wrap">
+      <div class="hero-grid container">
         <div class="reveal">
-          <p class="eyebrow">HAND BREWED · SLOWLY ROASTED</p>
-          <h1 class="hero-title" id="heroTitle">讓風味，<br>在<span class="blue">藍天</span>下<br>慢慢抵達。</h1>
-          <p class="hero-lede">藍天咖啡為喜歡手沖的你，挑選值得細品的單一產區咖啡豆。從第一縷花香，到最後一口回甘，每一杯都有自己的晴朗天氣。</p>
+          <p class="eyebrow">ARTISANAL TAIWAN TEA · EST. 2026</p>
+          <h1 id="heroTitle">一席茶香，<br>敬每一位<br><em>懂茶的人。</em></h1>
+          <p class="hero-lede">生於高山雲霧，成於匠人炭焙。茶香為追求純粹的喝茶愛好者，封存每一泡山頭氣的清甜、蘭香與深厚回甘。</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#coffee">探索本季風味 <span class="arrow">→</span></a>
-            <a class="button button-outline" href="#story">認識藍天</a>
+            <a class="button button-primary" href="#selection">品味本季珍茗 <span class="icon-arrow">→</span></a>
+            <a class="button button-outline" href="#tasting">預約茶席品嘗</a>
           </div>
-          <p class="hero-note">TAIPEI · TAIWAN · EST. 2018</p>
+          <p class="hero-signature">HAND-PICKED · SINGLE ORIGIN · SLOW BREWED</p>
         </div>
-        <div class="hero-art" aria-hidden="true">
-          <div class="sun"></div>
-          <div class="mountain"></div>
-          <div class="coffee-vessel"><div class="dripper"></div><div class="carafe"></div></div>
-          <p class="art-label"><strong>92°C</strong>理想水溫<br>細細喚醒香氣</p>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="sun-disc"></div>
+          <div class="mountain-back"></div>
+          <div class="mountain-front"></div>
+          <div class="tea-sprout">
+            <span class="sprout-stem"></span>
+            <span class="sprout-leaf sprout-leaf-1"></span>
+            <span class="sprout-leaf sprout-leaf-2"></span>
+            <span class="sprout-leaf sprout-leaf-3"></span>
+            <span class="sprout-leaf sprout-leaf-4"></span>
+            <span class="sprout-bud"></span>
+          </div>
+          <p class="origin-badge"><b>2,200m</b>梨山雲霧茶區<br>純手工採摘一心二葉</p>
         </div>
       </div>
-      <p class="scroll-line">SCROLL TO DISCOVER</p>
+      <p class="scroll-hint">SCROLL TO EXPLORE</p>
     </section>
 
-    <section class="intro" id="story" aria-labelledby="storyTitle">
-      <div class="intro-grid wrap">
-        <div class="intro-stamp reveal" aria-hidden="true">
-          <div class="stamp-circle"><div><strong>慢一點，<br>更清楚。</strong><span>LET THE FLAVOUR SPEAK</span></div></div>
-          <div class="stamp-card"><b>BLUE SKY NOTE</b><p>一杯好咖啡，從來不是匆忙完成的事。</p></div>
+    <!-- Story Section -->
+    <section class="story" id="story" aria-labelledby="storyTitle">
+      <div class="story-grid container">
+        <div class="story-window reveal" aria-hidden="true">
+          <div class="window-sun"></div>
+          <div class="window-hill-1"></div>
+          <div class="window-hill-2"></div>
+          <p class="window-tag"><b>LI-SHAN, TAIWAN</b>ALTITUDE 2,200M</p>
+          <div class="story-note">
+            <b>PHILOSOPHY OF TEA</b>
+            <p>好茶如老友，不負山林與歲月，入喉自知純粹。</p>
+          </div>
         </div>
         <div class="reveal">
-          <p class="eyebrow">OUR PHILOSOPHY</p>
-          <h2 class="section-title" id="storyTitle">在一杯之間，<br>看見產地的<em>晴朗</em>。</h2>
-          <p class="section-copy">我們相信，精品咖啡的美好不該被複雜掩蓋。以小批次烘焙留住豆子的個性，再用穩定、誠實的手沖，讓風土與時間在杯中變得清晰。</p>
-          <p class="section-copy">給懂得放慢腳步的人，也給每一個想重新認識咖啡的人。</p>
-          <a class="intro-link" href="#brew">看看我們如何沖煮 <span>→</span></a>
+          <p class="eyebrow">TEA HERITAGE</p>
+          <h2 class="title" id="storyTitle">從一片晨露嫩葉，<br>到舌尖綻放的<strong>山頭氣</strong>。</h2>
+          <p class="copy">好茶從來不是一串華麗名詞。它來自兩千公尺高山的冷冽晨霧、日照的節奏，以及茶農世代傳承的敬畏。茶香走遍台灣崇山峻嶺，只為將原始山林的清幽靈氣，完整留在一杯茶湯裡。</p>
+          <p class="copy">嚴選頂級一心二葉，恪守古法炭焙與微發酵工法。少一分浮躁，多一分甘醇，讓風土自己說話。</p>
+          <a class="story-link" href="#ritual">看見我們的品茗沖泡之道 <span>→</span></a>
         </div>
       </div>
     </section>
 
-    <section class="coffee-section" id="coffee" aria-labelledby="coffeeTitle">
-      <div class="wrap">
+    <!-- Selection Section -->
+    <section class="selection" id="selection" aria-labelledby="selectionTitle">
+      <div class="container">
         <div class="section-head reveal">
-          <div><p class="eyebrow">SEASONAL SELECTION</p><h2 class="section-title" id="coffeeTitle">今天，想喝哪一片<em>藍天</em>？</h2></div>
-          <p class="section-copy">三款當季單品，為不同的晨光、午後與靜夜而選。</p>
+          <div>
+            <p class="eyebrow">PREMIUM SELECTION</p>
+            <h2 class="title" id="selectionTitle">本季臻選：三款頂級<strong>高山茶韻</strong>。</h2>
+          </div>
+          <p class="copy">為熱愛品茶的行家嚴選三款單一茶區代表作：清香、蜜香與炭焙陳韻，皆具極致風骨。</p>
         </div>
-        <div class="coffee-grid">
-          <article class="coffee-card reveal">
-            <div class="coffee-content">
-              <span class="coffee-number">01 / BRIGHT</span>
-              <p class="coffee-origin">ETHIOPIA · YIRGACHEFFE</p>
-              <h3>衣索比亞<br>耶加雪菲</h3>
-              <p class="coffee-notes">白花、佛手柑、蜂蜜</p>
-              <div class="coffee-bottom"><span class="price">NT$ 520 / 200g</span><button class="add-button" type="button" data-coffee="衣索比亞・耶加雪菲">加入收藏 ＋</button></div>
+        <div class="tea-grid">
+          <!-- Card 1 -->
+          <article class="tea-card reveal">
+            <div class="canister-visual" aria-hidden="true">
+              <div class="canister">
+                <span class="canister-seal">梨</span>
+                <b class="canister-name">極品高冷茶</b>
+                <span class="canister-spec">LI-SHAN / 2,200M</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="card-index">01 / FLORAL &amp; CRISP</span>
+              <h3>梨山・極品高冷烏龍</h3>
+              <p class="card-origin">海拔 2,200m｜手採一心二葉｜輕發酵生茶</p>
+              <div class="flavour">
+                <span>蘭花幽香</span>
+                <span>水梨冷甜</span>
+                <span>高山冷礦韻</span>
+              </div>
+              <div class="card-footer">
+                <span class="price">NT$ 1,280 / 75g</span>
+                <button class="taste-button" type="button" data-tea="梨山・極品高冷烏龍">預約品嘗 ＋</button>
+              </div>
             </div>
           </article>
-          <article class="coffee-card reveal">
-            <div class="coffee-content">
-              <span class="coffee-number">02 / JUICY</span>
-              <p class="coffee-origin">KENYA · KIRINYAGA</p>
-              <h3>肯亞<br>祈安布</h3>
-              <p class="coffee-notes">黑醋栗、洛神、葡萄柚</p>
-              <div class="coffee-bottom"><span class="price">NT$ 580 / 200g</span><button class="add-button" type="button" data-coffee="肯亞・祈安布">加入收藏 ＋</button></div>
+
+          <!-- Card 2 -->
+          <article class="tea-card reveal">
+            <div class="canister-visual" aria-hidden="true">
+              <div class="canister">
+                <span class="canister-seal">美</span>
+                <b class="canister-name">東方美人茶</b>
+                <span class="canister-spec">MIAOLI / HONEY OOLONG</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="card-index">02 / HONEY &amp; RICH</span>
+              <h3>苗栗・白毫東方美人</h3>
+              <p class="card-origin">小綠葉蟬著涎｜白毫頂級重發酵</p>
+              <div class="flavour">
+                <span>天然蜜香</span>
+                <span>成熟果韻</span>
+                <span>琥珀甘醇</span>
+              </div>
+              <div class="card-footer">
+                <span class="price">NT$ 1,580 / 75g</span>
+                <button class="taste-button" type="button" data-tea="苗栗・白毫東方美人">預約品嘗 ＋</button>
+              </div>
             </div>
           </article>
-          <article class="coffee-card reveal">
-            <div class="coffee-content">
-              <span class="coffee-number">03 / ROUND</span>
-              <p class="coffee-origin">COLOMBIA · HUILA</p>
-              <h3>哥倫比亞<br>慧蘭</h3>
-              <p class="coffee-notes">黃桃、焦糖、可可尾韻</p>
-              <div class="coffee-bottom"><span class="price">NT$ 460 / 200g</span><button class="add-button" type="button" data-coffee="哥倫比亞・慧蘭">加入收藏 ＋</button></div>
+
+          <!-- Card 3 -->
+          <article class="tea-card reveal">
+            <div class="canister-visual" aria-hidden="true">
+              <div class="canister">
+                <span class="canister-seal">凍</span>
+                <b class="canister-name">傳統炭焙茶</b>
+                <span class="canister-spec">LU-GU / CHARCOAL ROAST</span>
+              </div>
+            </div>
+            <div class="card-body">
+              <span class="card-index">03 / ROAST &amp; DEEP</span>
+              <h3>鹿谷・百年炭焙烏龍</h3>
+              <p class="card-origin">龍眼木炭三度慢焙｜厚韻熟茶</p>
+              <div class="flavour">
+                <span>堅果甜香</span>
+                <span>龍眼木香</span>
+                <span>深邃喉韻</span>
+              </div>
+              <div class="card-footer">
+                <span class="price">NT$ 1,080 / 75g</span>
+                <button class="taste-button" type="button" data-tea="鹿谷・百年炭焙烏龍">預約品嘗 ＋</button>
+              </div>
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="brew" id="brew" aria-labelledby="brewTitle">
-      <div class="brew-grid wrap">
-        <div class="brew-visual reveal" aria-hidden="true">
-          <div class="pour-ring"></div><div class="brew-v60"></div><p class="brew-caption">V60 / 15G : 240ML<br>2'45''</p>
+    <!-- Ritual Section -->
+    <section class="ritual" id="ritual" aria-labelledby="ritualTitle">
+      <div class="ritual-grid container">
+        <div class="ritual-drawing reveal" aria-hidden="true">
+          <div class="tea-steam">
+            <span class="steam-line steam-1"></span>
+            <span class="steam-line steam-2"></span>
+            <span class="steam-line steam-3"></span>
+          </div>
+          <div class="gaiwan-lid"><span class="gaiwan-knob"></span></div>
+          <div class="gaiwan-bowl"></div>
+          <div class="gaiwan-saucer"></div>
+          <p class="ritual-caption">GAIWAN / 5G : 120ML<br>95°C · 45 SECONDS</p>
         </div>
         <div class="reveal">
-          <p class="eyebrow">A QUIET RITUAL</p>
-          <h2 class="section-title" id="brewTitle">把時間交給水，<br>讓咖啡說<em>自己的話</em>。</h2>
-          <p class="section-copy">不需要繁複儀式，只要三個安靜的步驟。每一個參數，都是為了讓你更靠近豆子原本的樣子。</p>
-          <ol class="brew-steps">
-            <li><span class="step-no">01</span><span class="step-copy"><b>研磨，先聞見期待</b><span>15g 中細研磨，讓香氣從指尖開始展開。</span></span></li>
-            <li><span class="step-no">02</span><span class="step-copy"><b>悶蒸，等待第一個呼吸</b><span>以 92°C 熱水浸潤 30 秒，喚醒甜感與層次。</span></span></li>
-            <li><span class="step-no">03</span><span class="step-copy"><b>注水，保持自己的節奏</b><span>穩定畫圈，讓 240ml 的清澈在 2 分 45 秒完成。</span></span></li>
+          <p class="eyebrow">BREWING RITUAL</p>
+          <h2 class="title" id="ritualTitle">沸水滌心，<br>靜候茶湯化為<strong>金黃</strong>。</h2>
+          <p class="copy">泡茶不是刻板的流程，而是一段重拾專注的靜心時刻。以溫潤之水喚醒沉睡茶葉，每一道茶湯都有其生命的起承轉合。</p>
+          <ol class="method-list">
+            <li>
+              <span class="method-no">01</span>
+              <div class="method-text">
+                <b>溫器滌心，聞乾茶香</b>
+                <span>以滾水溫潤蓋碗與茶杯，投茶五克，在溫熱器皿中輕嗅茶葉初醒的清雅原香。</span>
+              </div>
+            </li>
+            <li>
+              <span class="method-no">02</span>
+              <div class="method-text">
+                <b>高沖緩定，看茶舒展</b>
+                <span>以 95°C 純淨山泉水沿杯壁輕柔注入，靜待 45 秒，讓蜷曲的高山茶葉自在舒展。</span>
+              </div>
+            </li>
+            <li>
+              <span class="method-no">03</span>
+              <div class="method-text">
+                <b>分湯細品，回甘悠長</b>
+                <span>觀茶湯清澈金黃，入口滑順圓潤，鼻息留香，讓山頭的清涼氣息久久不散。</span>
+              </div>
+            </li>
           </ol>
         </div>
       </div>
     </section>
 
-    <section class="visit" id="visit" aria-labelledby="visitTitle">
-      <div class="wrap reveal">
-        <p class="eyebrow">THE BLUE SKY LETTER</p>
-        <h2 class="section-title" id="visitTitle">把下一杯好咖啡，<br>寄到你的日常裡。</h2>
-        <p>每月一封風味通信，分享新豆、沖煮靈感與只給會員的小小驚喜。</p>
-        <form class="subscribe" id="subscribeForm">
-          <input type="email" aria-label="電子郵件地址" placeholder="留下你的 Email" required>
-          <button type="submit">訂閱風味通信</button>
-        </form>
+    <!-- Tasting / Salon Section -->
+    <section class="tasting" id="tasting" aria-labelledby="tastingTitle">
+      <div class="tasting-grid container">
+        <div class="reveal">
+          <p class="eyebrow">PRIVATE TEA SALON</p>
+          <h2 class="title" id="tastingTitle">來一趟茶席，<br>靜享一杯專屬的<strong>金黃甘醇</strong>。</h2>
+          <p class="copy">由資深評茶師帶領，從乾茶聞香、看葉底、品茶湯到辨識山頭氣。我們備好山泉與古法炭火，靜候懂得停下腳步的您。</p>
+          <div class="details">
+            <div class="detail"><b>SALON ADDRESS</b><span>台北市大安區青田街 36 號</span></div>
+            <div class="detail"><b>OPENING HOURS</b><span>週二至週日 11:00 — 20:00</span></div>
+            <div class="detail"><b>EXPERIENCE</b><span>一席三款頂級私房茗茶・茶食佐配</span></div>
+            <div class="detail"><b>TELEPHONE</b><span>02 2398 8899</span></div>
+          </div>
+        </div>
+
+        <aside class="salon-card reveal" aria-label="茶香品茗預約卡">
+          <div class="salon-inner">
+            <p class="salon-kicker">RESERVE A SEAT</p>
+            <h3>預約茶席品嘗</h3>
+            <p>填寫您的資訊，品茗師將在 24 小時內與您確認專屬茶席時段。</p>
+            <form class="reserve-form" id="reserveForm">
+              <div class="form-group">
+                <label for="userName">尊姓大名</label>
+                <input type="text" id="userName" name="userName" placeholder="例如：陳先生 / 林小姐" required>
+              </div>
+              <div class="form-group">
+                <label for="userPhone">聯絡電話</label>
+                <input type="tel" id="userPhone" name="userPhone" placeholder="0912-345-678" required>
+              </div>
+              <div class="form-group">
+                <label for="teaChoice">欲優先品嘗之茶款</label>
+                <select id="teaChoice" name="teaChoice">
+                  <option value="梨山・極品高冷烏龍">梨山・極品高冷烏龍（輕發酵清香）</option>
+                  <option value="苗栗・白毫東方美人">苗栗・白毫東方美人（蜜香熟果）</option>
+                  <option value="鹿谷・百年炭焙烏龍">鹿谷・百年炭焙烏龍（厚韻炭焙）</option>
+                  <option value="由茶師現場依喜好推薦">由茶師現場依喜好推薦</option>
+                </select>
+              </div>
+              <button class="salon-submit" type="submit">確認預約茶席體驗 →</button>
+            </form>
+          </div>
+        </aside>
       </div>
     </section>
   </main>
 
+  <!-- Footer -->
   <footer>
-    <div class="footer-top wrap">
-      <div class="footer-brand"><a class="brand" href="#top"><span class="brand-mark">B</span><span>藍天咖啡<small>BLUE SKY COFFEE</small></span></a><p>為喜愛手沖咖啡的你，留下一段慢慢品味、微微放晴的時間。</p></div>
-      <div><p class="footer-heading">EXPLORE</p><ul class="footer-list"><li><a href="#story">我們的堅持</a></li><li><a href="#coffee">本季選豆</a></li><li><a href="#brew">沖煮日常</a></li></ul></div>
-      <div><p class="footer-heading">CONTACT</p><ul class="footer-list"><li><a href="mailto:hello@bluesky.coffee">hello@bluesky.coffee</a></li><li>台北市大安區晴朗路 18 號</li><li>每日 10:00 — 19:00</li></ul></div>
+    <div class="footer-grid container">
+      <div class="footer-brand">
+        <a class="brand" href="#top">
+          <span class="brand-seal" aria-hidden="true">茶</span>
+          <span class="brand-text">茶香<small>CHA XIANG TEA</small></span>
+        </a>
+        <p>從高山深處的一片嫩葉，到您手心溫潤清澈的甘醇茶湯。敬每一位追求純粹的愛茶之人。</p>
+      </div>
+      <div>
+        <p class="footer-heading">EXPLORE</p>
+        <ul class="footer-list">
+          <li><a href="#story">茶席理念</a></li>
+          <li><a href="#selection">珍稀茗茶</a></li>
+          <li><a href="#ritual">品茗之道</a></li>
+          <li><a href="#tasting">預約品嘗</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-heading">VISIT &amp; CONTACT</p>
+        <ul class="footer-list">
+          <li><a href="mailto:service@chaxiang.tea">service@chaxiang.tea</a></li>
+          <li>台北市大安區青田街 36 號</li>
+          <li>週二至週日 11:00 — 20:00</li>
+          <li>02 2398 8899</li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-bottom wrap"><span>© 2026 BLUE SKY COFFEE. ALL RIGHTS RESERVED.</span><span>BREW SLOW · LIVE BRIGHT</span></div>
+    <div class="footer-bottom container">
+      <span>© 2026 茶香 CHA XIANG. ALL RIGHTS RESERVED.</span>
+      <span>HERITAGE TEA · MODERN ELEGANCE</span>
+    </div>
   </footer>
 
+  <!-- Toast Notification Component -->
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Interactive JavaScript -->
   <script>
-    const menuToggle = document.querySelector('.menu-toggle');
+    // Mobile navigation toggle
+    const menuButton = document.querySelector('.menu-button');
     const navLinks = document.getElementById('navLinks');
-    menuToggle.addEventListener('click', () => {
-      const open = navLinks.classList.toggle('open');
-      menuToggle.setAttribute('aria-expanded', open);
-      menuToggle.setAttribute('aria-label', open ? '關閉導覽選單' : '開啟導覽選單');
-      menuToggle.textContent = open ? '×' : '☰';
+    menuButton.addEventListener('click', () => {
+      const opened = navLinks.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(opened));
+      menuButton.setAttribute('aria-label', opened ? '關閉導覽選單' : '開啟導覽選單');
+      menuButton.textContent = opened ? '×' : '☰';
     });
     navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
       navLinks.classList.remove('open');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      menuToggle.setAttribute('aria-label', '開啟導覽選單');
-      menuToggle.textContent = '☰';
+      menuButton.setAttribute('aria-expanded', 'false');
+      menuButton.setAttribute('aria-label', '開啟導覽選單');
+      menuButton.textContent = '☰';
     }));
 
+    // Toast alert handler
     const toast = document.getElementById('toast');
     let toastTimer;
     function showToast(message) {
       window.clearTimeout(toastTimer);
       toast.textContent = message;
       toast.classList.add('show');
-      toastTimer = window.setTimeout(() => toast.classList.remove('show'), 2600);
+      toastTimer = window.setTimeout(() => toast.classList.remove('show'), 2800);
     }
-    document.querySelectorAll('[data-coffee]').forEach(button => button.addEventListener('click', () => {
-      showToast(`已將「${button.dataset.coffee}」加入你的收藏。`);
-    }));
-    document.getElementById('subscribeForm').addEventListener('submit', event => {
-      event.preventDefault();
-      event.currentTarget.reset();
-      showToast('謝謝訂閱，下一封晴朗的風味通信即將寄出。');
+
+    // Tasting buttons interaction
+    document.querySelectorAll('[data-tea]').forEach(button => {
+      button.addEventListener('click', () => {
+        const teaName = button.dataset.tea;
+        const select = document.getElementById('teaChoice');
+        if (select) {
+          for (let option of select.options) {
+            if (option.value.includes(teaName)) {
+              select.value = option.value;
+              break;
+            }
+          }
+        }
+        showToast(`已為您加入品嘗願望清單「${teaName}」，歡迎於下方茶席預約體驗！`);
+        document.getElementById('tasting').scrollIntoView({ behavior: 'smooth' });
+      });
     });
 
+    // Reservation form submit
+    const reserveForm = document.getElementById('reserveForm');
+    if (reserveForm) {
+      reserveForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const userName = document.getElementById('userName').value.trim();
+        const teaChoice = document.getElementById('teaChoice').value;
+        showToast(`感謝 ${userName}！我們已收到您的品茗預約（${teaChoice}），將於24小時內專人聯絡您。`);
+        reserveForm.reset();
+      });
+    }
+
+    // Scroll reveal animation
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const revealItems = document.querySelectorAll('.reveal');
     if (reducedMotion || !('IntersectionObserver' in window)) {
-      revealItems.forEach(item => item.classList.add('visible'));
+      revealItems.forEach(element => element.classList.add('in'));
     } else {
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            entry.target.classList.add('in');
             observer.unobserve(entry.target);
           }
         });
       }, { threshold: .12 });
-      revealItems.forEach(item => observer.observe(item));
+      revealItems.forEach(element => observer.observe(element));
     }
   </script>
 </body>
